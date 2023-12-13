@@ -40,13 +40,13 @@ public class ClientesController {
         }
     }
 
-    public void editarCliente (String name, long cpf, String email, long phone, String adress) throws SQLException {
+    public void editarCliente (String name, String email, long phone, String adress) throws SQLException {
 
         Statement statement = connection.createStatement();
 
-        String queryUpdate = "UPDATE clientes SET cpf = " + cpf + "AND SET email = '" + email + "' AND SET telefone = " + phone + " AND SET endereco = '" + adress + "' WHERE nome = '" + name + "'";
+        String queryUpdate = "UPDATE clientes SET email = '" + email + "' AND SET telefone = " + phone + " AND SET endereco = '" + adress + "' WHERE nome = '" + name + "'";
 
-        statement.executeQuery(queryUpdate);
+        statement.executeUpdate(queryUpdate);
 
         System.out.println("Dados alterados com sucesso!");
     }
@@ -64,15 +64,15 @@ public class ClientesController {
 
         Statement statement = connection.createStatement();
 
-        String queryRegister = "INSERT INTO clientes VALUES (0, '" + cliente.getName() + "', '" + cliente.getEmail() + "', " + cliente.getPhone() + ", '" + cliente.getAddress() + "', " + cliente.getCpf() + ")";
-        statement.executeQuery(queryRegister);
+        String queryRegister = "INSERT INTO clientes VALUES (0, '" + cliente.getName() + "', '" + cliente.getEmail() + "', '" + cliente.getPhone() + "', '" + cliente.getAddress() + "', '" + cliente.getCpf() + "')";
+        statement.executeUpdate(queryRegister);
         System.out.println("Cliente cadastrado com sucesso!");
     }
 
-    public void consultarCliente (String name) throws SQLException {
+    public void consultarCliente (long cpf) throws SQLException {
 
         Statement statement = connection.createStatement();
-        String queryConsult = "SELECT * FROM clientes WHERE nome = '" + name + "'";
+        String queryConsult = "SELECT * FROM clientes WHERE cpf = " + cpf;
 
         ResultSet resultSet = statement.executeQuery(queryConsult);
         Clientes cliente = new Clientes();

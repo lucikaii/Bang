@@ -45,7 +45,7 @@ public class CategoriasController {
         Statement statement = connection.createStatement();
         String queryRegister = "INSERT INTO categorias VALUES (0, '" + categoria.getName() + "'";
 
-        statement.executeQuery(queryRegister);
+        statement.executeUpdate(queryRegister);
         System.out.println("Categoria cadastrada com sucesso!");
 
     }

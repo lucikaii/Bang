@@ -13,7 +13,7 @@ public class Conexao {
         this.server = "Localhost";
         this.schema = "bang_db";
         this.user = "root";
-        this.password = "kbl006";
+        this.password = "bcd127";
 
     }
 
